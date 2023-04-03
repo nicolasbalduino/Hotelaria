@@ -1,6 +1,6 @@
 ﻿namespace prjHotelaria.Entities
 {
-    internal class Client : Reserve
+    internal class Client
     {
         public string Name { get; set; }
         public string CPF { get; set; }
