@@ -10,6 +10,6 @@ namespace prjHotelaria.Entities
     {
         public int RoomNumber { get; private set; }
         public Room(int room) { RoomNumber = room; }
-        public double PerNightValue => RoomNumber * 100;
+        public double PerNightValue => (RoomNumber/20) * 100;
     }
 }
