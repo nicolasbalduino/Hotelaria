@@ -10,12 +10,14 @@
         public int RoomNumber { get; set; }
         public double CompTotal { get; private set; }
         public bool CheckIn { get; private set; }
+        public bool Breakfast { get; private set; }
 
-        public Reserve(string contractor, DateTime checkin, DateTime checkout, int room, double total, bool isCheckin)
+        public Reserve(string contractor, DateTime checkin, DateTime checkout, int room, double total, bool isCheckin, bool breakfast)
         {
             ContractorCPF = contractor;
             CheckinDate = checkin;
             CheckoutDate = checkout;
+            Breakfast = breakfast;
             Days = (int)(CheckoutDate.Date - CheckinDate.Date).TotalDays;
             RoomNumber = room;
             CheckIn = isCheckin;
@@ -37,7 +39,7 @@
 
         }
 
-        public double Total() => RoomTotal() + BreakFastTotal() + CompTotal;
+        public double Total() => RoomTotal() + (Breakfast ? BreakFastTotal() : 0) + CompTotal;
 
         public void SetCheckIn(DateTime checkin) { CheckinDate = checkin; }
         public void SetCheckOut(DateTime checkout) { CheckoutDate = checkout; }
