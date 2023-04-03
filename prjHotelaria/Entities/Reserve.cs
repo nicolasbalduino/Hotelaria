@@ -2,7 +2,8 @@
 {
     internal class Reserve
     {
-        public string CPF { get; private set; }
+        public string ContractorCPF { get; private set; }
+        public string CompanionCPF { get; private set; }
         public DateTime CheckinDate { get; set; }
         public DateTime CheckoutDate { get; set; }
         public int RoomNumber { get; set; }
