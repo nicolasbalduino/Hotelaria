@@ -1,11 +1,14 @@
 ﻿namespace prjHotelaria.Entities
 {
-    internal class Companion : Client
+    internal class Companion
     {
+        public string Name { get; set; }
+        public DateTime BirthDate { get; set; }
+        public int Age { get; set; }
         public string DependentCPF { get; private set; }
         public bool LegalAge { get; private set; }
 
-        public Companion(string name, DateTime birth, string cpf, int room, DateTime checkin, DateTime checkout, string dependent) : base(name, birth, cpf, room, checkin, checkout)
+        public Companion(string name, DateTime birth, string cpf, int room, DateTime checkin, DateTime checkout, string dependent)
         {
             DependentCPF = dependent;
             SetLegalAge();
