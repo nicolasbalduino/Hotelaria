@@ -21,6 +21,8 @@
             CheckIn = isCheckin;
         }
 
+        public void CheckCompanion(string cpf) { CompanionCPF = cpf; }
+
         public double RoomTotal() => (RoomNumber * 100) * Days;
         public double BreakFastTotal() => (CompanionCPF == null) ? Days * 20 : (Days * 20) * 2;
         public double CompanionTotal(DateTime companionDate)
