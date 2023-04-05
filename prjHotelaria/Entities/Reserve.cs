@@ -24,8 +24,8 @@
 
         public double RoomTotal(double room, bool breakFast)
         {
-            Total = room * Days;
-            if (Companion.LegalAge()) Total += (room * 0.5 * Days);
+            Total = room;
+            if (Companion.LegalAge()) Total += (room * 0.5);
             if (breakFast) Total += (Days * 20);
             if (Companion != null && breakFast) Total += (Days * 20);
 
