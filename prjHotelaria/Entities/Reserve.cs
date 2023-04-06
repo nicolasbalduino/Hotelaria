@@ -11,7 +11,7 @@
         public double Total { get; set; }
         public int Status { get; set; }
 
-        public Reserve(string contractor, DateTime checkin, DateTime checkout, int room, double total, bool isCheckin, bool breakfast)
+        public Reserve(string contractor, DateTime checkin, DateTime checkout, int room)
         {
             ContractorCPF = contractor;
             CheckinDate = checkin;
@@ -37,6 +37,16 @@
         public void CalculateDays() { Days = (int)(CheckoutDate.Date - CheckinDate.Date).TotalDays; }
 
         public void SetStatus(int opt) { Status = opt; }
+
+        public override string ToString()
+        {
+            return $"CPF Reserva: {ContractorCPF} | Quarto: {RoomNumber}| Checkin: {CheckinDate} | Checkout: {CheckoutDate} | Total: {Total}";
+        }
+
+        public string ToFile()
+        {
+            return $"{ContractorCPF}|{Companion.CPF}|{CheckinDate}|{CheckoutDate}|{RoomNumber}|{Total}|{Status}";
+        }
     }
 
 }

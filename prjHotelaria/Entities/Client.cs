@@ -18,5 +18,10 @@
             TimeSpan timeSpan = (DateTime.Now.Date - BirthDate.Date);
             return (timeSpan.TotalDays / 365.25) > 18;
         }
+
+        public string ToFile()
+        {
+            return $"{Name}|{CPF}|{BirthDate}";
+        }
     }
 }
