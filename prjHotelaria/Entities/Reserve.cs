@@ -24,8 +24,8 @@
 
         public double RoomTotal(double room, bool breakFast)
         {
-            Total = room;
-            if (Companion.LegalAge()) Total += (room * 0.5);
+            Total = room * Days;
+            if (Companion != null && Companion.LegalAge()) Total += (room * 0.5 * Days);
             if (breakFast) Total += (Days * 20);
             if (Companion != null && breakFast) Total += (Days * 20);
 
@@ -40,7 +40,7 @@
 
         public override string ToString()
         {
-            return $"CPF Reserva: {ContractorCPF} | Quarto: {RoomNumber}| Checkin: {CheckinDate} | Checkout: {CheckoutDate} | Total: {Total}";
+            return $"CPF Reserva: {ContractorCPF} | Quarto: {RoomNumber} | Checkin: {CheckinDate} | Checkout: {CheckoutDate} | Total: {Total}";
         }
 
         public string ToFile()

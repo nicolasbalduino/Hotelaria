@@ -16,12 +16,14 @@
         public bool LegalAge()
         {
             TimeSpan timeSpan = (DateTime.Now.Date - BirthDate.Date);
-            return (timeSpan.TotalDays / 365.25) > 18;
+            return (timeSpan.TotalDays / 365.25) >= 18;
         }
 
-        public string ToFile()
+        public override string ToString()
         {
-            return $"{Name}|{CPF}|{BirthDate}";
+            return $"Nome: {Name} | CPF: {CPF} | Data de nascimento: {BirthDate.ToShortDateString()}";
         }
+
+        public string ToFile() => $"{Name}|{CPF}|{BirthDate}";
     }
 }
