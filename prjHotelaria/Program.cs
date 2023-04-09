@@ -72,7 +72,7 @@ internal class Program
                 do
                 {
                     var aux = sr.ReadLine().Split("|");
-                    clientList.Add(new Client(aux[0], DateTime.Parse(aux[2]), aux[1]);
+                    clientList.Add(new Client(aux[0], DateTime.Parse(aux[2]), aux[1]));
                     
                 } while (sr.EndOfStream);
             }
