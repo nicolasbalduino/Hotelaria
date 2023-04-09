@@ -26,11 +26,11 @@ internal class Program
 
         DateTime dateCheckin;
         DateTime dateCheckout;
-        string cpfContratante;
-        string cpfAcompanhante;
+        string cpfCostumer;
+        string cpfCompanion;
         string continueReserve;
-        string acompanhante;
-        string cafeManha;
+        string companion;
+        string breakfast;
         do
         {
             Console.Write("Informe a data prevista de check-in: ");
@@ -63,7 +63,7 @@ internal class Program
             return null;
 
         Console.Write("Informe o CPF do contratante: ");
-        cpfContratante = Console.ReadLine();
+        cpfCostumer = Console.ReadLine();
 
         // verificar se o cliente já tem cadastro
 
@@ -72,29 +72,29 @@ internal class Program
         do
         {
             Console.Write("Terá acompanhante? [S/N] ");
-            acompanhante = Console.ReadLine().ToUpper();
-        } while (acompanhante != "S" && acompanhante != "N");
+            companion = Console.ReadLine().ToUpper();
+        } while (companion != "S" && companion != "N");
         Console.WriteLine();
 
-        if (acompanhante == "S")
+        if (companion == "S")
         {
             Console.Write("Informe o CPF do acompanhante: ");
-            cpfAcompanhante = Console.ReadLine();
+            cpfCompanion = Console.ReadLine();
             // verificar se o acompanhante já tem cadastro
         }
-        else cpfAcompanhante = "";
+        else cpfCompanion = "";
         Console.WriteLine();
 
         do
         {
             Console.Write("Terá café da manhã? [S/N] ");
-            cafeManha = Console.ReadLine().ToUpper();
-        } while (cafeManha != "S" && cafeManha != "N");
+            breakfast = Console.ReadLine().ToUpper();
+        } while (breakfast != "S" && breakfast != "N");
 
-        if (cafeManha == "N")
-            cafeManha = "Não"; // sem cafe
+        if (breakfast == "N")
+            breakfast = "Não"; // sem cafe
         else
-            cafeManha = "Sim"; // com cafe
+            breakfast = "Sim"; // com cafe
         Console.WriteLine();
 
         // informar o valor total
@@ -102,9 +102,9 @@ internal class Program
         Console.WriteLine("Resumo da reserva: ");
         Console.WriteLine("  Data de check-in: " + dateCheckin);
         Console.WriteLine("  Data de check-out: " + dateCheckout);
-        Console.WriteLine("  CPF do cliente: " + cpfContratante);
-        Console.WriteLine("  CPF do acompanhante: " + cpfAcompanhante);
-        Console.WriteLine("  Café da manhã: " + cafeManha);
+        Console.WriteLine("  CPF do cliente: " + cpfCostumer);
+        Console.WriteLine("  CPF do acompanhante: " + cpfCompanion);
+        Console.WriteLine("  Café da manhã: " + breakfast);
         Console.WriteLine();
 
         do
@@ -116,6 +116,6 @@ internal class Program
         if (continueReserve == "N")
             return null;
 
-        return new(cpfContratante, dateCheckin, dateCheckout, 1);
+        return new(cpfCostumer, dateCheckin, dateCheckout, 1);
     }
 }
