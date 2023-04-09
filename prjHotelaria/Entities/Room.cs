@@ -9,7 +9,9 @@ namespace prjHotelaria.Entities
     internal class Room
     {
         public int RoomNumber { get; private set; }
-        public Room(int room) { RoomNumber = room; }
+        public DateTime CheckinDate { get; set; }
+        public DateTime CheckoutDate { get; set; }
+        public Room(int room, DateTime checkin, DateTime checkout) { RoomNumber = room; CheckinDate = checkin; CheckoutDate = checkout; }
         public double PerNightValue => Math.Ceiling(RoomNumber/20.0) * 100;
     }
 }
