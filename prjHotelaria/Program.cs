@@ -8,15 +8,49 @@ internal class Program
     {
         Console.WriteLine(Math.Ceiling(1.0));
 
-        List<Reserve> reserves = new List<Reserve>();
+        List<Reserve> reservations = new List<Reserve>();
+        List<Client> clients = new List<Client>();
 
         Reserve reserva = DoReservation();
         if (reserva == null)
             Console.WriteLine("Reserva não realizada");
         else
         {
-            reserves.Add(reserva);
+            reservations.Add(reserva);
             Console.WriteLine("Reserva realizada com SUCESSO!");
+        }
+
+        SaveReservaions(reservations);
+        SaveClients(clients);
+    }
+
+    private static void SaveClients(List<Client> clients)
+    {
+        if (clients.Count > 0)
+        {
+            StreamWriter sw = new StreamWriter("costumers.vsf");
+
+            foreach (Client client in clients)
+            {
+                sw.WriteLine(client.ToFile());
+            }
+
+            sw.Close();
+        }
+    }
+
+    private static void SaveReservaions(List<Reserve> reservations)
+    {
+        if (reservations.Count > 0)
+        {
+            StreamWriter sw = new StreamWriter("reservations.vsf");
+
+            foreach (Reserve reservation in reservations)
+            {
+                sw.WriteLine(reservation.ToFile());
+            }
+
+            sw.Close();
         }
     }
 
