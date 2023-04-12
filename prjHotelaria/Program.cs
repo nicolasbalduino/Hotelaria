@@ -156,7 +156,7 @@ internal class Program
     }
 
         
-    }
+    
 
     private static void Menu(List<Client> clientList, List<Reserve> reserveList, List<Reserve> reserveListCheckIn, List<Room> roomList)
     {
@@ -191,12 +191,12 @@ internal class Program
               Console.WriteLine("Reserva não realizada");
               else
               {
-                  reservations.Add(reserva);
+                        reserveList.Add(reserva);
                   Console.WriteLine("Reserva realizada com SUCESSO!");
               }
 
-              SaveReservaions(reservations);
-              SaveClients(clients);
+              SaveReservaions(reserveList);
+              SaveClients(clientList);
               break;
 
                 case 2:
