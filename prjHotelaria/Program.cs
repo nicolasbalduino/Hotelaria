@@ -1,5 +1,6 @@
 
 ﻿using System.ComponentModel.Design;
+using System.Globalization;
 using prjHotelaria;
 
 using prjHotelaria.Entities;
@@ -8,7 +9,10 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-    List<Client> clientList = new List<Client>();
+
+
+
+        List<Client> clientList = new List<Client>();
         List<Reserve> reserveList = new List<Reserve>();
         List<Reserve> reserveListCheckIn = new List<Reserve>();
         List<Room> roomList = new List<Room>();
@@ -24,8 +28,68 @@ internal class Program
         List<Client> clients = new List<Client>();
 
         
-    }
 
+
+
+    }
+        //busca pelo cliente na lista, e caso nao tenha ele cadastra
+    private static void SearchAndCustomerRegistration(List<Client> clientList)
+    {
+        Console.WriteLine("Informe o cpf do cliente: ");
+        string cpf = Console.ReadLine();
+        bool isRegistered = false;
+
+        foreach (var client in clientList)
+        {
+            if (client.CPF.Equals(cpf))
+            {
+                Console.WriteLine("Cliente já cadastrado.");
+                Thread.Sleep(1000);
+                isRegistered = true;
+                break;
+            }
+        }
+
+        if(!isRegistered)
+        {
+            Console.WriteLine("Informe o nome para cadastro: ");
+            string name = Console.ReadLine();
+
+            Console.WriteLine("\nAgora informe a data de nascimento: DD/MM/AAAA:");
+            Thread.Sleep(800);
+
+            Console.WriteLine("\ninforme o dia do nascimento: ");
+            int day = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("\ninforme o mês do mascimento: ");
+            int month = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("\ninforme o ano do nascimento: ");
+            int year = int.Parse(Console.ReadLine());
+
+            string dateBirth = day + "/" + month + "/" + year;
+            CultureInfo Culture = new CultureInfo("pt-BR");
+            DateTime dateBirthClient = Convert.ToDateTime(dateBirth, Culture);
+            Client client = new(name, dateBirthClient, cpf);
+
+            if(client.LegalAge())
+            {
+                clientList.Add(client);
+                Console.WriteLine("\nCliente cadastrado no sistema.");
+                Thread.Sleep(1200);
+                Console.Clear();
+            }
+            else
+            {
+                Console.WriteLine("\nNão é possível cadastrar ciente menor de idade.");
+                Thread.Sleep(1200);
+                Console.Clear();
+            }
+            
+
+        }
+
+    }
     private static void SaveClients(List<Client> clients)
     {
         if (clients.Count > 0)
